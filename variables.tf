@@ -2,5 +2,5 @@
 
 variable "ami" {
   type = string
-  sensitive = true
+  #sensitive = true
 }
