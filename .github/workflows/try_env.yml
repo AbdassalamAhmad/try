@@ -10,6 +10,11 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      myInput:
+        description: "apply OR destroy"
+        required: true
+
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # AWS User Credentials.
@@ -24,5 +29,5 @@ jobs:
     - uses: actions/checkout@v2
     - run: terraform init
     - name: Terraform Apply
-      run: terraform apply -auto-approve
+      run: terraform ${{ inputs.myInput }} -auto-approve
     
