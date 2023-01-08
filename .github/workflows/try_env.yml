@@ -28,6 +28,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: terraform init
-    - name: Terraform Apply
+    - run: terraform plan
+    - name: Terraform ${{ inputs.myInput }}
       run: terraform ${{ inputs.myInput }} -auto-approve
     
