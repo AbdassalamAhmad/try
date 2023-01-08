@@ -22,5 +22,7 @@ jobs:
       TF_VAR_ami: ${{ secrets.TF_VAR_AMI }}
     steps:
     - uses: actions/checkout@v2
+    - run: terraform init
     - name: Terraform Apply
-      run: terraform apply
+      run: terraform apply -auto-approve
+    
