@@ -1,6 +1,6 @@
 resource "aws_instance" "bastion_instance_1" {
   ami                         = var.ami
-  instance_type               = "t3.micro"
+  instance_type               = var.ec2_type
   availability_zone           = "eu-south-1a"
 
 
