@@ -19,7 +19,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      TF_VAR_ami: ${{ secrets.TF_VAR_ami }}
+      TF_VAR_ami: ${{ secrets.TF_VAR_AMI }}
     steps:
     - uses: actions/checkout@v2
     - name: Terraform Apply
