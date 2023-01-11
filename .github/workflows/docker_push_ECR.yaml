@@ -6,6 +6,7 @@ on:
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # AWS User Credentials.
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} # AWS User Credentials.
+  AWS_REGION: us-east-1
 
 
 jobs:
@@ -16,6 +17,8 @@ jobs:
     - name: Login to AWS ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1    
+      with:
+        registry-type: public
     - name: Build and push docker image
       env:
         REGISTRY: ${{ steps.login-ecr.outputs.registry }}
