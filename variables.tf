@@ -7,5 +7,4 @@ variable "ami" {
 
 variable "ec2_type" {
   type = string
-  sensitive = true
 }
