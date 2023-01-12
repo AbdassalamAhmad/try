@@ -6,7 +6,7 @@ on:
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # AWS User Credentials.
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} # AWS User Credentials.
-  AWS_REGION: eu-south-1
+  AWS_REGION: us-east-1
 
 
 jobs:
@@ -14,12 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        role-to-assume: arn:aws:iam::123456789012:role/my-github-actions-role
-        aws-region: ${{ env.AWS_REGION }}
-    
     - name: Login to AWS ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1    
