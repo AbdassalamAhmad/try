@@ -26,6 +26,7 @@ env:
   EC2_PRIVATE_SSH_KEY: ${{ secrets.AWS_EC2_SSH_PRIVATE_KEY }} # Used to ssh into EC2.
   EC2_PUBLIC_SSH_KEY: ${{ secrets.AWS_SSH_PUBLIC_KEY }} # Used to upload public key to aws.
   AWS_REGION: us-east-1
+  TRIGGER: '${{ inputs.myInput }}'
 
 jobs:
   build:
@@ -83,7 +84,7 @@ jobs:
  
  
     - name: Deploy docker image to EC2
-      if: "${{ inputs.myInput }}" == "first"
+      if: env.TRIGGER == 'first'
       env:
         REGISTRY: ${{ steps.login-ecr-public.outputs.registry }}
         REGISTRY_ALIAS: g4x4w1s3
@@ -111,7 +112,7 @@ jobs:
 
 
     - name: Deploy docker image to EC2
-      if: "${{ inputs.myInput }}" == "second"
+      if:  env.TRIGGER == 'second'
       env:
         REGISTRY: ${{ steps.login-ecr-public.outputs.registry }}
         REGISTRY_ALIAS: g4x4w1s3
