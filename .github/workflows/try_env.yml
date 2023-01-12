@@ -83,7 +83,7 @@ jobs:
  
  
     - name: Deploy docker image to EC2
-      if: ${{ inputs.myInput }} == "first"
+      if: "${{ inputs.myInput }}" == "first"
       env:
         REGISTRY: ${{ steps.login-ecr-public.outputs.registry }}
         REGISTRY_ALIAS: g4x4w1s3
@@ -111,7 +111,7 @@ jobs:
 
 
     - name: Deploy docker image to EC2
-      if: ${{ inputs.myInput }} == "second"
+      if: "${{ inputs.myInput }}" == "second"
       env:
         REGISTRY: ${{ steps.login-ecr-public.outputs.registry }}
         REGISTRY_ALIAS: g4x4w1s3
