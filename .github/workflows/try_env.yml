@@ -100,10 +100,11 @@ jobs:
         script: |-
           sudo yum update -y
           sudo amazon-linux-extras install docker -y
-#          sudo service docker start
+
           sudo docker pull $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG
           sudo docker run -d --name ECR-Container -p 80:5000 $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG
 
+# sudo service docker start
 
 
 
