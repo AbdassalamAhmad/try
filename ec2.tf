@@ -2,6 +2,7 @@ resource "aws_instance" "bastion_instance_1" {
   ami                         = var.ami
   instance_type               = var.ec2_type
   availability_zone           = "eu-south-1a"
+  key_name                    = aws_key_pair.ssh_key_variable.key_name
 
 
   associate_public_ip_address = true
