@@ -96,7 +96,7 @@ jobs:
         host: ${{ env.BASTION_PUBLIC_IP }}
         username: ec2-user
         key: ${{ env.EC2_PRIVATE_SSH_KEY }}
-        #envs: EC2_PRIVATE_SSH_KEY,REGISTRY,REPOSITORY,IMAGE_TAG,AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,AWS_DEFAULT_REGION,AWS_REGION
+        
         script: |-
           sudo yum update -y
           sudo amazon-linux-extras install docker -y
@@ -123,7 +123,7 @@ jobs:
         host: ${{ env.BASTION_PUBLIC_IP }}
         username: ec2-user
         key: ${{ env.EC2_PRIVATE_SSH_KEY }}
-        #envs: EC2_PRIVATE_SSH_KEY,REGISTRY,REPOSITORY,IMAGE_TAG,AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,AWS_DEFAULT_REGION,AWS_REGION
+        
         script: |-
           sudo yum update -y
           sudo amazon-linux-extras install docker -y
