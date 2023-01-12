@@ -40,6 +40,7 @@ jobs:
       run: |
         terraform apply \
         -var="public_key=$EC2_PUBLIC_SSH_KEY" \
+        -var="key_name=bastion" \
         -auto-approve
     # - name: Terraform ${{ inputs.myInput }}
     #   run: terraform ${{ inputs.myInput }} -auto-approve
