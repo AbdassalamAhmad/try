@@ -27,6 +27,9 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs: # used to reference in later job
+      BASTION_PUBLIC_IP: ${{ steps.get-public-ip.outputs.bastion_public_ip}}
+
     env:
       TF_VAR_ami: ${{ secrets.TF_VAR_AMI }}
     steps:
@@ -40,8 +43,7 @@ jobs:
         -auto-approve
     # - name: Terraform ${{ inputs.myInput }}
     #   run: terraform ${{ inputs.myInput }} -auto-approve
-      
-
+    
     - name: Set Output 1
       id: get-public-ip
       run: echo "bastion_public_ip=$(terraform output bastion_public_ip)" >> $GITHUB_OUTPUT # new way of outputs
@@ -50,11 +52,6 @@ jobs:
   docker-build-push:
     runs-on: ubuntu-latest
     needs: build
-    # env:
-    #   REGISTRY: ${{ steps.login-ecr-public.outputs.registry }}
-    #   REGISTRY_ALIAS: g4x4w1s3
-    #   REPOSITORY: abc
-    #   IMAGE_TAG: ${{ github.sha }}
     
     steps:
     - uses: actions/checkout@v3
@@ -82,7 +79,7 @@ jobs:
         REGISTRY_ALIAS: g4x4w1s3
         REPOSITORY: abc
         IMAGE_TAG: ${{ github.sha }}
-        #AWS_DEFAULT_REGION: us-east-1
+
       uses: appleboy/ssh-action@master
       with:
         host: ${{ needs.build.steps.get-public-ip.outputs.bastion_public_ip }}
