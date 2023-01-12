@@ -23,7 +23,7 @@ jobs:
       env:
         REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         REGISTRY_ALIAS: g4x4w1s3
-        REPOSITORY: abc
+        REPOSITORY: abcd
         IMAGE_TAG: ${{ github.sha }}
       run: |
         docker build -t $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG .
