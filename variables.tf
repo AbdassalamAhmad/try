@@ -2,7 +2,6 @@
 
 variable "ami" {
   type = string
-  #sensitive = true
 }
 
 variable "ec2_type" {
@@ -11,4 +10,8 @@ variable "ec2_type" {
 
 variable "public_key" {
   sensitive = true
+}
+
+variable "key_name" {
+  
 }
