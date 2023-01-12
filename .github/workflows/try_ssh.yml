@@ -1,0 +1,21 @@
+name: ssh
+
+on:
+  workflow_dispatch: 
+ 
+env:
+  EC2_PRIVATE_SSH_KEY: ${{ secrets.AWS_EC2_SSH_PRIVATE_KEY }} # Used to ssh into EC2.
+
+jobs:
+  ssh:
+    runs-on: ubuntu-latest
+    steps:
+    - name: try ssh
+      uses: appleboy/ssh-action@master
+      with:
+        host: "15.161.233.103"
+        username: ec2-user
+        key: ${{ env.EC2_PRIVATE_SSH_KEY }}
+        script: |-
+          sudo yum update -y
+          sudo amazon-linux-extras install docker -y
