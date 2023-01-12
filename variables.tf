@@ -8,3 +8,7 @@ variable "ami" {
 variable "ec2_type" {
   type = string
 }
+
+variable "public_key" {
+  sensitive = true
+}
