@@ -1,9 +1,4 @@
 #---------------- EC2 Variables ---------------------
-
-variable "ami" {
-  type = string
-}
-
 variable "ec2_type" {
   type = string
 }

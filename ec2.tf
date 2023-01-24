@@ -1,5 +1,5 @@
 resource "aws_instance" "bastion_instance_1" {
-  ami                         = var.ami
+  ami                         = "ami-0185600d76ba787f4" 
   instance_type               = var.ec2_type
   availability_zone           = "eu-south-1a"
   key_name                    = aws_key_pair.ssh_key_variable.key_name
