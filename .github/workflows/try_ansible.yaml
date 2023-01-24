@@ -33,8 +33,10 @@ jobs:
     
     - name: Install Ansible
       run: |
-        sudo yum update -y
-        sudo amazon-linux-extras install ansible2 -y
+        sudo apt update
+        sudo apt install software-properties-common
+        sudo add-apt-repository --yes --update ppa:ansible/ansible
+        sudo apt -y install ansible
 
     - name: Run Ansible Command
       env:
@@ -43,3 +45,6 @@ jobs:
       run: |
         ansible webserver -m ping --extra-vars "ansible_host=$BASTION_PUBLIC_IP ansible_ssh_private_key_file=$EC2_PRIVATE_SSH_KEY"
       working-directory: ./Ansible
+
+# sudo yum update -y
+# sudo amazon-linux-extras install ansible2 -y
