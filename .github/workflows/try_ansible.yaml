@@ -32,7 +32,6 @@ jobs:
       run: echo "bastion_public_ip=$(terraform output bastion_public_ip)" >> $GITHUB_ENV
     
     - name: Login to AWS ECR Public
-      if: env.TRIGGER == 'apply'
       id: login-ecr-public
       uses: aws-actions/amazon-ecr-login@v1    
       with:
