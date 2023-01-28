@@ -31,6 +31,7 @@ jobs:
       id: get-public-ip
       run: echo "bastion_public_ip=$(terraform output bastion_public_ip)" >> $GITHUB_ENV
     
+    # this task will be used with build and push not when pull and run.
     # - name: Login to AWS ECR Public
     #   id: login-ecr-public
     #   uses: aws-actions/amazon-ecr-login@v1    
@@ -51,5 +52,5 @@ jobs:
       run: |
         echo "$EC2_PRIVATE_SSH_KEY" > ssh_key_aws.pem
         sudo chmod 400 ssh_key_aws.pem
-        ansible-playbook docker_playbook.yml --extra-vars "ansible_host=$bastion_public_ip" -v
+        ansible-playbook docker_playbook.yml --extra-vars "ansible_host=$bastion_public_ip"
       working-directory: ./Ansible
